@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block title %}Test{% endblock %}
+{% block body_classes %}page-home{% endblock %}
+
+{% block feature %}
+<style>
+    section.companies > div:first-child {
+        padding-bottom: 30px;
+    }
+    section.press > h2 {
+        padding-bottom: 20px;
+    }
+</style>
+<section class="feature">
+    <h2>Discover me &amp; companies </br> hue </h2>
+    <div class="wrap">  
+        <p class="cta-link" style="text-align: center">
+        {% if not user.is_authenticated %}  
+        <a class='fb-login' data-fancybox-type="iframe" href="/auth/signup/">Beginnn</a>
+        {% endif %}
+        </p>
+    </div>
+</section>
+{% endblock %}
+{% block content %}
+<section class="group with-cta games">
+    <h2>Games</h2>
+    <div class="games-group equal-height">
+        {% for game in games %}
+        <a href="/games/{{game.slug}}/" class='item'>
+            <div class='img-wrap'>
+                <img src="{{game.icon_url}}" class='available'>
+            </div>
+            <h3>{{game.name}}</h3>
+            <p>{{game.description}}</p>
+        </a>
+        {% endfor %}
+    </div>
+    <p class="cta-link mh-med"><a href="/games/">See all games</a></p>
+</section>
+<section class="group companies">
+    <div class="col-2-4">
+        <div class="col">
+            <h2>Computer</h2>
+        </div>
+        <div class="col">
+            <p>autowire in these verticals</p>
+            <p class="cta-link"><a href="/platform/">Join our cause</a></p>
+        </div>
+    </div>
+    <div class="thirds block-wrap">
+        <div class="col">
+            <a href="/industries/" class="block-link">
+            <img src="{{STATIC_URL}}img/placeholders/industry/finance.jpg" alt="">
+            <span class="block-text">Finance</span>
+            </a>
+        </div>
+        <div class="col">
+            <a href="/industries/" class="block-link">
+            <img src="{{STATIC_URL}}img/placeholders/industry/consulting.jpg" alt="">
+            <span class="block-text">Consulting</span>
+            </a>
+        </div>
+        <div class="col">
+            <a href="/industries/" class="block-link">
+            <img src="{{STATIC_URL}}img/placeholders/industry/technology.jpg" alt="">
+            <span class="block-text">Technology</span>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="group science">
+    <div class="col-2-4">
+        <div class="col">
+            <h2>Science</h2>
+        </div>
+        <div class="col">
+            <h3>line<br>break!</h3>
+            <p> ppp text ppp</p>
+            <p class="cta-link"><a href="/product/">Why does it work?</a></p>
+        </div>
+    </div>
+</section>
+<section class="group press">
+    <h2>As Seen In</h2>
+    {% include 'press.html' %}
+</section>
+<section class="group blog">
+    <h2>Blog</h2>
+    <div class="thirds" style="max-height:300px">
+        <div class="col">
+            <div class="item">
+                <h3 class="delta"><a href='#'>111</a></h3>
+                <p> Once upon a time</p>
+                <p class="more"><a href='#'>Read more</a></p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item">
+                <h3 class="delta"><a href='#'>222</a></h3>
+                <p> 2 chainz</p>
+                <p class="more"><a href='#'>Read more</a></p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="item">
+                <h3 class="delta"><a href='#'>333</a></h3>
+                <p>Trinity force</p>
+                <p class="more"><a href='#'>Read more</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-2-4">
+        <div class="col">
+        </br></br>
+        <p class="cta-link"><a href="/blog/">Read even more</a></p>
+        </div>
+    </div>
+</section>
+{% endblock %}
